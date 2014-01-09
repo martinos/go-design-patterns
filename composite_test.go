@@ -35,10 +35,10 @@ func TestAreaCalculation(t *testing.T) {
 		circle := Circle{2}
 		square := Square{3}
 
-		shapes := Shapes{make([]Shape, 3)}
-		shapes.shapes[0] = rect
-		shapes.shapes[1] = circle
-		shapes.shapes[2] = square
+		shapes := Shapes{make([]Shape, 0)}
+		shapes.shapes = append(shapes.shapes, &rect)
+		shapes.shapes = append(shapes.shapes, &circle)
+		shapes.shapes = append(shapes.shapes, &square)
 		Convey("The the area of all the shapes should be 21.28318", func() {
 			So(shapes.Area(), ShouldAlmostEqual, 21.28318)
 		})

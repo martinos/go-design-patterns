@@ -10,9 +10,9 @@ func TestAdapter(t *testing.T) {
 		desk := Desk{4, 2}
 		Convey("Should be able to add it to a rectangle shape in a Shapes object", func() {
 			rect := Rectangle{4, 3}
-			shapes := Shapes{make([]Shape, 2)}
-			shapes.shapes[0] = rect
-			shapes.shapes[1] = DeskAdapter{desk}
+			shapes := Shapes{[]Shape{}}
+			shapes.shapes = append(shapes.shapes, &rect)
+			shapes.shapes = append(shapes.shapes, DeskAdapter{desk})
 			So(shapes.Area(), ShouldAlmostEqual, 20)
 		})
 	})
