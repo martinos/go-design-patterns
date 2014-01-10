@@ -14,8 +14,8 @@ func (o *ObsMock) Update() {
 	o.called = true
 }
 
-func (o *ObsMock) GetSubjState() int {
-	return o.Subject.GetState()
+func (o *ObsMock) SubjState() int {
+	return o.Subject.State()
 }
 
 func (o *ObsMock) SetSubject(subj *Subject) {
@@ -24,7 +24,7 @@ func (o *ObsMock) SetSubject(subj *Subject) {
 
 func TestObserver(t *testing.T) {
 	Convey("Given an Subject", t, func() {
-		subj := Subject{State: 1}
+		subj := Subject{state: 1}
 		Convey("Observers should be attached", func() {
 			obs1 := ObsMock{}
 			obs2 := ObsMock{}
@@ -39,8 +39,8 @@ func TestObserver(t *testing.T) {
 			})
 
 			Convey("Each observer should be able to get the subject state on notification", func() {
-				So(obs1.GetSubjState(), ShouldEqual, 1)
-				So(obs2.GetSubjState(), ShouldEqual, 1)
+				So(obs1.SubjState(), ShouldEqual, 1)
+				So(obs2.SubjState(), ShouldEqual, 1)
 			})
 		})
 	})

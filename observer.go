@@ -2,7 +2,7 @@ package go_design_patterns
 
 type Subject struct {
 	Observers []*Observer
-	State     int
+	state     int
 }
 
 func (s *Subject) Attach(o Observer) {
@@ -16,8 +16,8 @@ func (s *Subject) Notify() {
 	}
 }
 
-func (s *Subject) GetState() int {
-	return s.State
+func (s *Subject) State() int {
+	return s.state
 }
 
 // Observer
@@ -25,5 +25,5 @@ func (s *Subject) GetState() int {
 type Observer interface {
 	Update()
 	SetSubject(*Subject)
-	GetSubjState() int
+	SubjState() int
 }
